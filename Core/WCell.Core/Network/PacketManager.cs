@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Cell.Core;
 using NLog;
 using WCell.Core.Localization;
@@ -115,7 +114,7 @@ namespace WCell.Core.Network
 		/// <param name="type">the type to search through for packet handlers</param>
 		public void Register(Type type)
 		{
-			var methods = type.GetMethods(BindingFlags.Static | BindingFlags.Public);
+			var methods = type.GetMethods(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
 
 			foreach (var method in methods)
 			{
@@ -146,7 +145,7 @@ namespace WCell.Core.Network
 		/// <summary>
 		/// Automatically detects and registers all PacketHandlers within the given Assembly
 		/// </summary>
-		public void RegisterAll(Assembly asm)
+		public void RegisterAll(System.Reflection.Assembly asm)
 		{
 			// Register all the packet handlers in the given assembly
 			foreach (Type asmType in asm.GetTypes())

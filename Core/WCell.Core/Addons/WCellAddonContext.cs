@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using WCell.Util;
 
 namespace WCell.Core.Addons
@@ -12,11 +11,11 @@ namespace WCell.Core.Addons
 	public class WCellAddonContext
 	{
 		protected FileInfo m_file;
-		protected Assembly m_assembly;
+		protected System.Reflection.Assembly m_assembly;
 		protected IWCellAddon m_addon;
 		protected WCellAddonAttribute m_attr;
 
-		public WCellAddonContext(FileInfo file, Assembly asm)
+		public WCellAddonContext(FileInfo file, System.Reflection.Assembly asm)
 		{
 			m_file = file;
 			m_assembly = asm;
@@ -35,7 +34,7 @@ namespace WCell.Core.Addons
 		/// <summary>
 		/// The containing assembly (might be null if descriptor has not been loaded yet)
 		/// </summary>
-		public Assembly Assembly
+		public System.Reflection.Assembly Assembly
 		{
 			get { return m_assembly; }
 		}

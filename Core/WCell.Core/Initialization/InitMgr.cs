@@ -17,7 +17,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using NLog;
 using WCell.Core.Localization;
 using WCell.Util;
@@ -60,7 +59,7 @@ namespace WCell.Core.Initialization
         /// Initializes all Types of the given Assembly.
         /// </summary>
         /// <returns>Whether initialization could be performed for all found steps.</returns>
-        public static bool Initialize(Assembly asm)
+        public static bool Initialize(System.Reflection.Assembly asm)
         {
             var initMgr = new InitMgr();
             initMgr.AddStepsOfAsm(asm);
@@ -150,7 +149,7 @@ namespace WCell.Core.Initialization
         /// Adds all InitializationSteps of the given Assembly.
         /// </summary>
         /// <param name="asm"></param>
-        public void AddStepsOfAsm(Assembly asm)
+        public void AddStepsOfAsm(System.Reflection.Assembly asm)
         {
             // Go through every type in this assembly.
             var dependentInitors = new List<DependentInitializationStep>();
@@ -163,7 +162,7 @@ namespace WCell.Core.Initialization
             //s_log.Info(string.Format(Resources.InitStepsLoaded, totalStepCount.ToString(), (totalStepCount == 1 ? "step" : "steps")));
         }
 
-		public void AddGlobalMgrsOfAsm(Assembly asm)
+		public void AddGlobalMgrsOfAsm(System.Reflection.Assembly asm)
 		{
 			foreach (var type in asm.GetTypes())
 			{
@@ -214,7 +213,7 @@ namespace WCell.Core.Initialization
             }
 
             // Get all public static methods in this type.
-            var methods = type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+            var methods = type.GetMethods(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
 
             // Check each method we found to see if it has an initialization attribute.
             foreach (var method in methods)
