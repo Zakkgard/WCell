@@ -24,7 +24,6 @@ namespace WCell.AuthServerConsole
 {
 	internal static class AuthServerConsole
 	{
-
 		internal static void Run()
 		{
 			Console.WriteLine("Console ready - Type ? for help");
@@ -51,10 +50,12 @@ namespace WCell.AuthServerConsole
 					// console shutdown
 					break;
 				}
+
 				if (line == null || !AuthenticationServer.Instance.IsRunning)
 				{
 					break;
 				}
+
 				if (DatabaseUtil.IsWaiting)
 				{
 					DatabaseUtil.Input.Write(line);

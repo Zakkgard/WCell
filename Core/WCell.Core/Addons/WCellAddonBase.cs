@@ -51,7 +51,7 @@ namespace WCell.Core.Addons
 
 		static void OnError(string msg)
 		{
-			log.Warn("<Config>" + msg);
+			log.Warn($"<Config> {msg}");
 		}
 
 		public virtual bool UseConfig
@@ -104,7 +104,7 @@ namespace WCell.Core.Addons
 					}
 					catch (Exception e)
 					{
-						throw new Exception("Unable to save " + config.GetType().Name + " of addon: " + this, e);
+						throw new Exception($"Unable to save {config.GetType().Name} of addon: {this}", e);
 					}
 				}
 			}
