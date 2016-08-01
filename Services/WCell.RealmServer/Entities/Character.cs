@@ -625,12 +625,10 @@ namespace WCell.RealmServer.Entities
 				var bonus = Math.Min(this.RestXp, experience);
 				xp += bonus;
 				this.RestXp -= bonus;
-                //ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExpRested, killed.Name, experience, bonus);
                 CharacterHandler.SendXpReceivedNotification(this, experience, killed, bonus);
 			}
 			else
 			{
-                //ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExp, killed.Name, experience);
                 CharacterHandler.SendXpReceivedNotification(this, experience, killed);
             }
 

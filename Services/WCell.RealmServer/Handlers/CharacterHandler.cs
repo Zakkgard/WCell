@@ -570,6 +570,14 @@ namespace WCell.RealmServer.Handlers
 			}
 		}
 
+        /// <summary>
+		/// Sends experience gained notifications to the character
+        /// OPCODE: SMS_LOG_XPGAIN
+		/// </summary>
+		/// <param name="client">the client to send to</param>
+		/// <param name="xpReceived">the amout of experience gained</param>
+		/// <param name="victim">the xp resource, NPC if the experience is gained through combat, otherwise null (quests etc.)</param>
+		/// <param name="xpRestBonus">the rest bonus experience amount (default 0)</param>
         public static void SendXpReceivedNotification(IPacketReceiver client, int xpReceived, INamed victim = null, int xpRestBonus = 0)
         {
             using (var packet = new RealmPacketOut(RealmServerOpCode.SMSG_LOG_XPGAIN))
