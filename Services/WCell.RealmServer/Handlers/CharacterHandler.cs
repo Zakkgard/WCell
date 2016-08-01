@@ -533,7 +533,7 @@ namespace WCell.RealmServer.Handlers
 		}
 		#endregion
 
-		#region Level Up
+		#region Level Up & XP
 		/// <summary>
 		/// Sends level up info to the client.
 		/// </summary>
@@ -569,6 +569,28 @@ namespace WCell.RealmServer.Handlers
 				client.Send(packet);
 			}
 		}
+
+        public static void SendXpReceivedNotification(IPacketReceiver client, int xpReceived, INamed victim = null, int xpRestBonus = 0)
+        {
+            using (var packet = new RealmPacketOut(RealmServerOpCode.SMSG_LOG_XPGAIN))
+            {
+                var xpSourceEntity = victim as NPC;
+
+                packet.Write(xpSourceEntity != null ? xpSourceEntity.EntityId : EntityId.Zero);
+                packet.Write(xpReceived + xpRestBonus);
+                packet.WriteByte(xpSourceEntity != null ? 0 : 1);
+
+                if (xpSourceEntity != null)
+                {
+                    packet.Write(xpReceived);
+                    packet.WriteFloat(1);
+                }
+
+                packet.WriteByte(0);
+
+                client.Send(packet);
+            }
+        }
 		#endregion
 
 		#region Selection

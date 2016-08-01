@@ -605,12 +605,12 @@ namespace WCell.RealmServer.Entities
 		/// </summary>
 		public void GainCombatXp(int experience, INamed killed, bool gainRest)
 		{
-			if (Level >= MaxLevel)
+			if (this.Level >= this.MaxLevel)
 			{
 				return;
 			}
 
-			var xp = experience + (experience * KillExperienceGainModifierPercent / 100);
+			var xp = experience + (experience * this.KillExperienceGainModifierPercent / 100);
 
 			if (m_activePet != null && m_activePet.MayGainExperience)
 			{
@@ -619,21 +619,23 @@ namespace WCell.RealmServer.Entities
 				m_activePet.TryLevelUp();
 			}
 
-			if (gainRest && RestXp > 0)
+			if (gainRest && this.RestXp > 0)
 			{
 				// add rest bonus
-				var bonus = Math.Min(RestXp, experience);
+				var bonus = Math.Min(this.RestXp, experience);
 				xp += bonus;
-				RestXp -= bonus;
-				ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExpRested, killed.Name, experience, bonus);
+				this.RestXp -= bonus;
+                //ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExpRested, killed.Name, experience, bonus);
+                CharacterHandler.SendXpReceivedNotification(this, experience, killed, bonus);
 			}
 			else
 			{
-				ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExp, killed.Name, experience);
-			}
+                //ChatMgr.SendCombatLogExperienceMessage(this, Locale, RealmLangKey.LogCombatExp, killed.Name, experience);
+                CharacterHandler.SendXpReceivedNotification(this, experience, killed);
+            }
 
-			Experience += xp;
-			TryLevelUp();
+			this.Experience += xp;
+			this.TryLevelUp();
 		}
 
 		/// <summary>
@@ -644,15 +646,21 @@ namespace WCell.RealmServer.Entities
 		public void GainXp(int experience, bool useRest = false)
 		{
 			var xp = experience;
-			if (useRest && RestXp > 0)
+			if (useRest && this.RestXp > 0)
 			{
-				var bonus = Math.Min(RestXp, experience);
+				var bonus = Math.Min(this.RestXp, experience);
 				xp += bonus;
-				RestXp -= bonus;
-			}
+				this.RestXp -= bonus;
 
-			Experience += xp;
-			TryLevelUp();
+                CharacterHandler.SendXpReceivedNotification(this, experience, null, bonus);
+            }
+            else
+            {
+                CharacterHandler.SendXpReceivedNotification(this, experience);
+            }
+
+			this.Experience += xp;
+			this.TryLevelUp();
 		}
 
 		internal bool TryLevelUp()
