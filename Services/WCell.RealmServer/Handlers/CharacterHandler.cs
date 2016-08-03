@@ -1413,7 +1413,7 @@ namespace WCell.RealmServer.Handlers
 		{
 			using (var packet = new RealmPacketOut(RealmServerOpCode.SMSG_TRIGGER_CINEMATIC, 4))
 			{
-				packet.WriteUInt(chr.Archetype.Race.IntroductionMovie);
+                packet.WriteUInt(chr.Archetype.Race.IntroductionMovie);
 				chr.Client.Send(packet);
 			}
 		}
