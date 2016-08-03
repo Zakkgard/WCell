@@ -1413,8 +1413,16 @@ namespace WCell.RealmServer.Handlers
 		{
 			using (var packet = new RealmPacketOut(RealmServerOpCode.SMSG_TRIGGER_CINEMATIC, 4))
 			{
-                packet.WriteUInt(chr.Archetype.Race.IntroductionMovie);
-				chr.Client.Send(packet);
+                if (chr.Class == ClassId.DeathKnight)
+                {
+                    packet.WriteUInt(chr.Archetype.Class.IntroductionMovie);
+                }
+                else
+                {
+                    packet.WriteUInt(chr.Archetype.Race.IntroductionMovie);
+                }
+
+                chr.Client.Send(packet);
 			}
 		}
 
