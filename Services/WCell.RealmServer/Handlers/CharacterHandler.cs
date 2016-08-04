@@ -1430,7 +1430,7 @@ namespace WCell.RealmServer.Handlers
         /// Empty handler to avoid the warnings, opcode unknown
         /// </summary>
         [ClientPacketHandler(RealmServerOpCode.CMSG_COMPLETE_CINEMATIC)]
-        public static void HandleCompleteCinematic()
+        public static void HandleCompleteCinematic(IRealmClient client, RealmPacketIn packet)
         {
         }
 
@@ -1438,7 +1438,7 @@ namespace WCell.RealmServer.Handlers
         /// Empty handler to avoid the warnings, opcode unknown
         /// </summary>
         [ClientPacketHandler(RealmServerOpCode.CMSG_NEXT_CINEMATIC_CAMERA)]
-        public static void HandleNextCinematicCamera()
+        public static void HandleNextCinematicCamera(IRealmClient client, RealmPacketIn packet)
         {
         }
 
