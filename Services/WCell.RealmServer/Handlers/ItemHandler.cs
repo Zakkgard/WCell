@@ -462,11 +462,28 @@ namespace WCell.RealmServer.Handlers
 				owner.Send(packet);
 			}
 		}
+        
+        [ClientPacketHandler(RealmServerOpCode.CMSG_ITEM_REFUND_INFO_REQUEST)]
+        public static void HandleItemRefundInfoRequest(IRealmClient client, RealmPacketIn packet)
+        {
+            var chr = client.ActiveCharacter;
+            var itemId = packet.ReadUInt32();
+            var item = ItemMgr.Templates.Get(itemId);
 
+            if (item == null)
+                return;
 
-		#region CMSG_ITEM_QUERY_SINGLE
+            SendRefundInfo(client, item);
+        }
 
-		[ClientPacketHandler(RealmServerOpCode.CMSG_ITEM_QUERY_SINGLE)]
+        private static void SendRefundInfo(IRealmClient client, ItemTemplate item)
+        {
+            //throw new NotImplementedException();
+        }
+
+        #region CMSG_ITEM_QUERY_SINGLE
+
+        [ClientPacketHandler(RealmServerOpCode.CMSG_ITEM_QUERY_SINGLE)]
 		public static void HandleItemSingleQuery(IRealmClient client, RealmPacketIn packet)
 		{
 			uint templateId = packet.ReadUInt32();
