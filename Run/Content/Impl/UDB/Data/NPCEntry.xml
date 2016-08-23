@@ -3,19 +3,19 @@
   <DataHolder Name="NPCEntry">
     <DefaultTable>creature_template</DefaultTable>
 
-    <Flat Name="Id" Column="entry" Type="UInt32" />
+    <Flat Name="Id" Column="Entry" />
     <FlatArray Name="DifficultyOverrideEntryIds">
-      <Column Name="difficulty_entry_1"/>
-      <Column Name="difficulty_entry_2"/>
-      <Column Name="difficulty_entry_3"/>
+      <Column Name="DifficultyEntry1"/>
+      <Column Name="DifficultyEntry2"/>
+      <Column Name="DifficultyEntry3"/>
     </FlatArray>
 	<FlatArray Name="KillCreditIds" Pattern="KillCredit{#}" Offset="1" />
 	
     <FlatArray Name="DisplayIds">
-      <Column Name="modelid_1"/>
-      <Column Name="modelid_2"/>
-      <Column Name="modelid_3"/>
-      <Column Name="modelid_4"/>
+      <Column Name="ModelId1"/>
+      <Column Name="ModelId2"/>
+      <Column Name="ModelId3"/>
+      <Column Name="ModelId4"/>
     </FlatArray>
     <FlatArray Name="Names">
       <Column Name="name" />
@@ -40,74 +40,74 @@
       <!--<Column Name="subname_loc8" Table="locales_creature" />-->
     </FlatArray>
     <Flat Name="InfoString" Column="IconName" />
-    <Flat Name="MinLevel" Column="minlevel" />
-    <Flat Name="MaxLevel" Column="maxlevel" />
-    <Flat Name="MinHealth" Column="minhealth" />
-    <Flat Name="MaxHealth" Column="maxhealth" />
-    <Flat Name="MinMana" Column="minmana" />
-    <Flat Name="MaxMana" Column="maxmana" />
-    <Flat Name="MinDamage" Column="mindmg" />
-    <Flat Name="MaxDamage" Column="maxdmg" />
+    <Flat Name="MinLevel" Column="MinLevel" />
+    <Flat Name="MaxLevel" Column="MaxLevel" />
+    <Flat Name="MinHealth" Column="MinLevelHealth" />
+    <Flat Name="MaxHealth" Column="MaxLevelHealth" />
+    <Flat Name="MinMana" Column="MinLevelMana" />
+    <Flat Name="MaxMana" Column="MaxLevelMana" />
+    <Flat Name="MinDamage" Column="MinMeleeDmg" />
+    <Flat Name="MaxDamage" Column="MaxMeleeDmg" />
     <FlatArray Name="Resistances">
-      <Column Name="armor"/>
-      <Column Name="resistance1"/>
-      <Column Name="resistance2"/>
-      <Column Name="resistance3"/>
-      <Column Name="resistance4"/>
-      <Column Name="resistance5"/>
-      <Column Name="resistance6"/>
+      <Column Name="Armor"/>
+      <Column Name="ResistanceHoly"/>
+      <Column Name="ResistanceFire"/>
+      <Column Name="ResistanceNature"/>
+      <Column Name="ResistanceFrost"/>
+      <Column Name="ResistanceShadow"/>
+      <Column Name="ResistanceArcane"/>
     </FlatArray>
-    <Flat Name="AllianceFactionId" Column="faction_A" />
-    <Flat Name="HordeFactionId" Column="faction_H" />
-    <Flat Name="NPCFlags" Column="npcflag" />
-    <Flat Name="UnitFlags" Column="unit_flags" />
+    <Flat Name="AllianceFactionId" Column="FactionAlliance" />
+    <Flat Name="HordeFactionId" Column="FactionHorde" />
+    <Flat Name="NPCFlags" Column="NPCFlags" />
+    <Flat Name="UnitFlags" Column="UnitFlags" />
     <Flat Name="DynamicFlags" Column="dynamicflags" />
-    <Flat Name="EntryFlags" Column="type_flags" />
-    <Flat Name="SpeedFactor" Column="speed_walk" />
-    <Flat Name="Scale" Column="scale" />
-    <Flat Name="Rank" Column="rank" />
-    <Flat Name="DamageSchool" Column="dmgschool" />
-    <Flat Name="AttackPower" Column="attackpower" />
+    <Flat Name="EntryFlags" Column="CreatureTypeFlags" />
+    <Flat Name="SpeedFactor" Column="SpeedWalk" />
+    <Flat Name="Scale" Column="Scale" />
+    <Flat Name="Rank" Column="Rank" />
+    <Flat Name="DamageSchool" Column="DamageSchool" />
+    <Flat Name="AttackPower" Column="MeleeAttackPower" />
     <!-- not sure if it's the same mod-->
-    <Flat Name="DamageMod" Column="dmg_multiplier" />
-    <Flat Name="AttackTime" Column="baseattacktime" />
+    <Flat Name="DamageMod" Column="DamageMultiplier" />
+    <Flat Name="AttackTime" Column="MeleeBaseAttackTime" />
     <!--<Flat Name="OffhandAttackPower" Column="attackpower"/>
     <Flat Name="OffhandMinDamage" Column="mindmg" />
     <Flat Name="OffhandMaxDamage" Column="maxdmg" />
-    <Flat Name="OffhandAttackTime" Column="baseattacktime" />-->
-    <Flat Name="RangedAttackTime" Column="rangeattacktime" />
-    <Flat Name="FamilyId" Column="family" />
-    <Flat Name="RangedMinDamage" Column="minrangedmg" />
-    <Flat Name="RangedMaxDamage" Column="maxrangedmg" />
-    <Flat Name="RangedAttackPower" Column="rangedattackpower" />
-    <Flat Name="Type" Column="type" />
-    <Flat Name="LootId" Column="lootid" />
-    <Flat Name="PickPocketLootId" Column="pickpocketloot" />
-    <Flat Name="SkinLootId" Column="skinloot" />
-    <Flat Name="MoneyDrop" Column="maxgold" />
+    <Flat Name="OffhandAttackTime" Column="MeleeBaseAttackTime" />-->
+    <Flat Name="RangedAttackTime" Column="RangedBaseAttackTime" />
+    <Flat Name="FamilyId" Column="Family" />
+    <Flat Name="RangedMinDamage" Column="MinRangedDmg" />
+    <Flat Name="RangedMaxDamage" Column="MaxRangedDmg" />
+    <Flat Name="RangedAttackPower" Column="RangedAttackPower" />
+    <Flat Name="Type" Column="CreatureType" />
+    <Flat Name="LootId" Column="LootId" />
+    <Flat Name="PickPocketLootId" Column="pickpocketlootid" />
+    <Flat Name="SkinLootId" Column="SkinningLootId" />
+    <Flat Name="MoneyDrop" Column="MaxLootGold" />
     <Flat Name="MovementType" Column="MovementType" />
     <Flat Name="InhabitType" Column="InhabitType" />
-    <Flat Name="ModHealth" Column="unk16" />
-    <Flat Name="ModMana" Column="unk17" />
+    <!--<Flat Name="ModHealth" Column="unk16" />
+    <Flat Name="ModMana" Column="unk17" />-->
     <Flat Name="IsLeader" Column="RacialLeader" />
-    <FlatArray Name="QuestItems" Pattern="questItem{#}" Offset="1" />
-	<Flat Name="MovementId" Column="movementId" />
-    <Flat Name="Regenerates" Column="RegenHealth" />
-    <Flat Name="EquipmentId" Column="equipment_id" />
+    <FlatArray Name="QuestItems" Pattern="QuestItem{#}" Offset="1" />
+	<Flat Name="MovementId" Column="MovementTemplateId" />
+    <Flat Name="Regenerates" Column="RegenerateStats" />
+    <Flat Name="EquipmentId" Column="EquipmentTemplateId" />
     <!--<Flat Name="" Column="mechanic_immune_mask" />-->
-    <Flat Name="ExtraA9Flags" Column="flags_extra" />
-    <Flat Name="ClassId" Column="unit_class" />
-    <Flat Name="RaceId" Column="trainer_race" />
+    <Flat Name="ExtraA9Flags" Column="ExtraFlags" />
+    <Flat Name="ClassId" Column="UnitClass" />
+    <Flat Name="RaceId" Column="TrainerRace" />
     <Flat Name="SpellGroupId" Column="PetSpellDataId" />
 
-    <FlatArray Name="FixedSpells" Pattern="spell{#}" Offset="1" />
+    <!--<FlatArray Name="FixedSpells" Pattern="Spell{#}" Offset="1" />-->
 
-    <Flat Name="TrainerTemplateId" Column="trainer_id" />
-    <Flat Name="VendorTemplateId" Column="vendor_id" />
+    <Flat Name="TrainerTemplateId" Column="TrainerTemplateId" />
+    <Flat Name="VendorTemplateId" Column="VendorTemplateId" />
 
     <Nested Name="TrainerEntry">
-      <Flat Name="TrainerType" Column="trainer_type" />
-      <Flat Name="RequiredSpellId" Column="trainer_spell" />
+      <Flat Name="TrainerType" Column="TrainerType" />
+      <Flat Name="RequiredSpellId" Column="TrainerSpell" />
     </Nested>
 
     <Nested Name="AddonData">

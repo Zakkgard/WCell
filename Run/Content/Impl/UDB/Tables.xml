@@ -15,7 +15,7 @@
     <PrimaryColumn Name="id" TypeName="UInt32"/>
   </Table>
 
-  <Table Name="areatrigger_tavern" MainDataHolder="ATTemplate">
+  <Table Name="areatrigger_tavern" MainDataHolder="ATTemplateTavern">
     <PrimaryColumn Name="id" TypeName="UInt32"/>
     <Var Name="Type" Value="Rest"/>
   </Table>
@@ -90,7 +90,7 @@
   </Table>
 -->
   <Table Name="creature_template" MainDataHolder="NPCEntry">
-    <PrimaryColumn Name="entry"/>
+    <PrimaryColumn Name="Entry"/>
   </Table>
 
   <Table Name="creature_template_addon" MainDataHolder="NPCEntry">
