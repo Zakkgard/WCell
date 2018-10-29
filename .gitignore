@@ -23,3 +23,5 @@ TestResults/
 /Logs
 /Utilities/WCell.Tools/output
 /.code_swarm
+/.vs
+/Addons/WCell.DefaultAddon/bin/Debug/netstandard2.0
